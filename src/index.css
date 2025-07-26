@@ -1,0 +1,244 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Modern TV Dark Theme */
+    --background: 222 23% 7%;
+    --foreground: 210 40% 96%;
+
+    --card: 220 18% 10%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 220 18% 12%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 210 100% 70%;
+    --primary-foreground: 222 23% 7%;
+
+    --secondary: 217 19% 18%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 217 19% 15%;
+    --muted-foreground: 215 15% 70%;
+
+    --accent: 198 93% 60%;
+    --accent-foreground: 222 23% 7%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 96%;
+
+    --border: 217 19% 18%;
+    --input: 217 19% 15%;
+    --ring: 210 100% 70%;
+
+    /* Modern AI and Effects */
+    --ai-glow: 210 100% 70%;
+    --ai-pulse: 198 93% 60%;
+    --ai-success: 142 76% 45%;
+    --ai-warning: 38 92% 50%;
+    --ai-error: 0 84% 60%;
+    --waveform: 198 93% 60%;
+    --glass-bg: 220 18% 10% / 0.6;
+    --glass-border: 210 40% 96% / 0.1;
+    
+    /* Modern Gradients */
+    --gradient-bg: linear-gradient(135deg, hsl(222 23% 7%), hsl(217 19% 9%));
+    --gradient-card: linear-gradient(145deg, hsl(220 18% 10% / 0.8), hsl(217 19% 12% / 0.6));
+    --gradient-glass: linear-gradient(145deg, hsl(220 18% 15% / 0.4), hsl(217 19% 18% / 0.2));
+    --gradient-glow: radial-gradient(circle, hsl(210 100% 70% / 0.15), transparent 70%);
+    --gradient-ai: radial-gradient(circle, hsl(198 93% 60% / 0.2), transparent 60%);
+    
+    /* Enhanced Animation */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-glass: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    
+    /* Modern Spacing */
+    --radius: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: var(--gradient-bg);
+  }
+}
+
+@layer components {
+  /* Keyboard Navigation Focus */
+  .focus-ring {
+    @apply focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+  
+  .nav-focus {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background transition-all;
+  }
+  
+  /* Glass Morphism */
+  .glass {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--glass-border));
+  }
+  
+  .glass-panel {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--glass-border));
+  }
+  
+  /* Modern Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+  
+  .animate-glow-pulse {
+    animation: glowPulse 2s ease-in-out infinite;
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-lg;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-[0_0_20px_hsl(var(--primary)/0.3)];
+  }
+  
+  /* TV Interface Specific */
+  .tv-tile {
+    @apply rounded-xl overflow-hidden transition-all duration-300 focus-visible:outline-none focus-visible:scale-110 focus-visible:shadow-[0_0_30px_hsl(var(--primary)/0.4)];
+  }
+  
+  .tv-content {
+    @apply rounded-lg overflow-hidden transition-all duration-300 focus-visible:outline-none focus-visible:scale-105 focus-visible:shadow-[0_0_20px_hsl(var(--primary)/0.3)];
+  }
+  
+  /* Hide scrollbars */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in,
+    .animate-scale-in,
+    .animate-glow-pulse,
+    .hover-lift,
+    .hover-glow,
+    .tv-tile,
+    .tv-content {
+      animation: none;
+      transition: none;
+    }
+  }
+}
+
+@layer utilities {
+  /* Keyframe Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes glowPulse {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--ai-pulse) / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(var(--ai-pulse) / 0.8), 0 0 60px hsl(var(--ai-pulse) / 0.4);
+    }
+  }
+}
