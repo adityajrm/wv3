@@ -167,7 +167,7 @@ export class GeminiLiveAudio {
   stopRecording(): void {
     if (!this.isRecording) return;
 
-    this.updateStatus('Stopping recording...');
+    this.updateStatus('Disconnecting...');
     this.isRecording = false;
 
     if (this.scriptProcessorNode && this.sourceNode) {
@@ -183,7 +183,11 @@ export class GeminiLiveAudio {
       this.mediaStream = null;
     }
 
-    this.updateStatus('Ready to speak');
+    // Close the session when stopping recording to fully disconnect
+    this.session?.close();
+    this.session = null;
+
+    this.updateStatus('Disconnected');
   }
 
   reset(): void {
